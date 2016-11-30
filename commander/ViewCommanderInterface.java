@@ -3,6 +3,7 @@ package com.luxoft.shop.commander;
 import java.util.List;
 
 /**
+ *
  * Created by Ringo on 30.11.2016.
  */
 public interface ViewCommanderInterface {
@@ -13,4 +14,5 @@ public interface ViewCommanderInterface {
 
     void showOrders(List<String> strings);
 
+    
 }
