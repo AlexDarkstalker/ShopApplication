@@ -19,6 +19,10 @@ public class ViewCommander implements ViewCommanderInterface{
     @Override
     public void showProducts(List<String> strings) {
         userInterface.showProducts(strings);
+    }
 
+    @Override
+    public void showOrders(List<String> strings) {
+        userInterface.showOrders(strings);
     }
 }

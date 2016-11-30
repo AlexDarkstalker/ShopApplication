@@ -1,7 +1,10 @@
 package com.luxoft.shop.view;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopDialogUI extends JDialog {
@@ -12,7 +15,7 @@ public class ShopDialogUI extends JDialog {
     private JList productsList;
     private JList orderList;
     private JList transactionList;
-    private JSpinner spinner1;
+    private JSpinner numOfProduct;
     private JButton addButton;
 
     public ShopDialogUI() {
@@ -46,7 +49,37 @@ public class ShopDialogUI extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                onAdd();
+            }
+        });
+        productsList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });
+        productsList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(productsList.getSelectedValuesList().size() == 0)
+                    addButton.setEnabled(false);
+                else
+                    addButton.setEnabled(true);
+            }
+        });
     }
+
+    private void onAdd() {
+        int num = (Integer) this.numOfProduct.getValue();
+        List<String> strings = productsList.getSelectedValuesList();
+        DefaultListModel dlm = new DefaultListModel();
+    }
+
+
 
     private void onOK() {
         // add your code here
@@ -65,14 +98,22 @@ public class ShopDialogUI extends JDialog {
         System.exit(0);
     }
 
-    private void outputProducts(DefaultListModel dlm) {
-        this.productsList.setModel(dlm);
+    private void outputToList(JList jlist,  DefaultListModel dlm) {
+        jlist.setModel(dlm);
     }
 
-    public void showProducts(List<String> strings) {
+    private DefaultListModel createModel(List<String> strings) {
         DefaultListModel<String> dlm= new DefaultListModel<>();
         for(String s:strings)
             dlm.addElement(s);
-        outputProducts(dlm);
+        return dlm;
+    }
+
+    public void showProducts(List<String> strings) {
+        outputToList(this.productsList, createModel(strings));
+    }
+
+    public void showOrders(List<String> strings) {
+        outputToList(this.transactionList, createModel(strings));
     }
 }

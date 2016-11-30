@@ -14,6 +14,7 @@ public class Shop implements Shopable {
     private List<Customer> customers;
     private List<Product> products;
     private List<Order> orders;
+    private Order currentOrder;
 
     public Shop() {
         this.customers = new ArrayList<>();
@@ -38,6 +39,10 @@ public class Shop implements Shopable {
 
     public List<Order> getOrders() {
         return orders;
+    }
+
+    public Order getCurrentOrder() {
+        return currentOrder;
     }
 
     public List<Product> getProducts() {

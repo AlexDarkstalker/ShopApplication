@@ -14,9 +14,7 @@ public class Launcher {
         ViewCommanderInterface shopViewInterface = new ViewCommander();
         shopCommandInterface.createFromFile();
         shopViewInterface.showProducts(shopCommandInterface.showProducts());
+        shopViewInterface.showOrders(shopCommandInterface.showOrders());
         shopViewInterface.makeVisible(true);
-        //System.out.println(shopCommandInterface.showProducts());
-        //System.out.println(shopCommandInterface.showOrders());
-
     }
 }

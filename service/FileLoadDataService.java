@@ -17,9 +17,7 @@ import java.util.*;
  * Created by Ringo on 29.11.2016.
  */
 public class FileLoadDataService implements LoadDataService {
-    //private final String filePath = "files\\feeds.product";
-    //private final File file = new File(filePath);
-    //String path = new File("").getAbsolutePath();
+
     private final File fileProduct = new File(".\\files\\feeds.product");
     private final File fileOrders = new File(".\\files\\feeds.order");
 

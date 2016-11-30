@@ -13,7 +13,7 @@ import java.util.List;
  * Created by Ringo on 29.11.2016.
  */
 public class ShopCommander implements ShopCommanderInterface{
-    public static final Shop shop = new Shop();
+    public final Shop shop = new Shop();
 
     public void createFromFile() {
         LoadDataService serv = new FileLoadDataService();

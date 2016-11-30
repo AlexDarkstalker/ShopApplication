@@ -14,5 +14,5 @@ public interface ViewCommanderInterface {
 
     void showOrders(List<String> strings);
 
-    
+
 }
